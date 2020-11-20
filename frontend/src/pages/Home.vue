@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5 mb-5">
+  <div class="fuid-container mt-5 mb-5">
     <section id="main" class="main">
         <div class="container">
           <div class="row mt-5">
@@ -36,7 +36,7 @@
     </section>
 
     <section>
-      <div class="container">
+      <div class="fuid-container">
         <div class="row mt-5 pt-5">
           <div class="container text-center">
             <h4 class="text-center default-font">Featured New Releases</h4>

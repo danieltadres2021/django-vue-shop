@@ -14,21 +14,42 @@
               <a class="nav-link"> Catalogo </a>
             </router-link>
            </li>
+           <li class="nav-item">
+             <router-link to="/">
+               <a class="nav-link"> Products Details </a>
+             </router-link>
+           </li>
+           <li class="nav-item">
+             <router-link to="/">
+               <a class="nav-link"> Cart </a>
+             </router-link>
+           </li>
+           <li class="nav-item">
+             <router-link to="/">
+               <a class="nav-link"> Admin Products </a>
+             </router-link>
+           </li>
         </ul>
+
+        <ul class="navbar-nav ">
+          <li class="nav-item">
+            <router-link to="/">
+              <a class="nav-link"> Login </a>
+            </router-link>
+           </li>
+        </ul>
+
       </div>
     </div>
   </nav>
 </template>
 
 <style scoped>
-
 .font-xl-size {
   font-size: 2rem;
 }
 
 a {
-
   text-decoration: none;
 }
-
 </style>
