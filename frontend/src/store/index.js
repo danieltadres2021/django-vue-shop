@@ -14,6 +14,11 @@ const store = createStore({
         }
       ]
     }
+  },
+  getters: {
+    categories: state => {
+      return state.categories;
+    }
   }
 })
 

@@ -9,7 +9,7 @@
 export default {
   computed: {
     hasCoaches() {
-      return this.$store.state.categories;
+      return this.$store.getters.categories;
     }
   }
 }
