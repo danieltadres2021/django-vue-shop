@@ -53,3 +53,11 @@ class BandList(generics.ListCreateAPIView):
 class BandDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Band.objects.all()
     serializer_class = BandSerializer
+
+class ProductList(generics.ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
