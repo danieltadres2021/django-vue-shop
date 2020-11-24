@@ -1,15 +1,14 @@
 <template>
   <div class="container mt-5">
-    <h1> ProductList Shop </h1>
-    {{ hasCoaches }}
+    <h1> ProductList Shop! </h1>
   </div>
 </template>
 
 <script>
 export default {
   computed: {
-    hasCoaches() {
-      return this.$store.getters.categories;
+    hasProducts() {
+      return this.$store.getters.products;
     }
   }
 }
