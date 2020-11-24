@@ -7,11 +7,17 @@ from django.shortcuts import render
 
 from django.contrib.auth.models import User
 
-from api.models import Category
+from api.models import (
+    Category,
+    Band,
+    Product
+)
 
 from api.serializers import (
+    UserSerializer,
     CategorySerializer,
-    UserSerializer
+    BandSerializer,
+    ProductSerializer
 )
 
 from api.permissions import IsOwnerOrReadOnly
@@ -20,6 +26,14 @@ from rest_framework import (
     generics,
     permissions
 )
+
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 class CategoryList(generics.ListCreateAPIView):
     queryset = Category.objects.all()
@@ -32,10 +46,10 @@ class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly,
                       IsOwnerOrReadOnly]
 
-class UserList(generics.ListAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+class BandList(generics.ListCreateAPIView):
+    queryset = Band.objects.all()
+    serializer_class = BandSerializer
 
-class UserDetail(generics.RetrieveAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+class BandDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Band.objects.all()
+    serializer_class = BandSerializer
