@@ -17,8 +17,13 @@ const store = createStore({
     }
   },
   getters: {
-    products: state => {
+    getProducts: state => {
       return state.products;
+    }
+  },
+  mutations: {
+    registerProduct(state, payload) {
+      state.products.push(payload);
     }
   }
 })
