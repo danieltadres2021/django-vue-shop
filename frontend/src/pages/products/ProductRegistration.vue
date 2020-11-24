@@ -1,11 +1,5 @@
 <template>
-  <section>
-
-  </section>
+  <base-card>
+    <h1>ProductRegistration.vue</h1>
+  </base-card>
 </template>
-
-<script>
-export default {
-  computed: {}
-}
-</script>

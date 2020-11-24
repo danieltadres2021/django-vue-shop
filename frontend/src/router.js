@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from './pages/Home.vue';
 import ProductsList from './pages/products/ProductsList.vue';
 import ProductRegistration from './pages/products/ProductRegistration.vue';
 import NotFound from './pages/NotFound.vue';
@@ -7,7 +6,7 @@ import NotFound from './pages/NotFound.vue';
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', component: Home },
+    { path: '/', redirect: '/products' },
     { path: '/products', component: ProductsList },
     { path: '/register', component: ProductRegistration },
     { path: '/:notFound(.*)', component: NotFound },
