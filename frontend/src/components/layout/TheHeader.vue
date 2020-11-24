@@ -12,9 +12,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="nav">
-
         <!-- LEFT -->
-
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <router-link to="/products">
@@ -27,9 +25,7 @@
              </router-link>
             </li>
         </ul>
-
         <!-- RIGHT -->
-
         <ul class="navbar-nav">
           <li class="nav-item">
             <router-link to="/">
@@ -37,9 +33,10 @@
             </router-link>
            </li>
         </ul>
-      </div>
 
+      </div>
     </div>
+
   </nav>
 
 </template>
