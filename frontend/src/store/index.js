@@ -13,18 +13,45 @@ const store = createStore({
           "category": 1,
           "band": 1
         }
-      ]
+      ],
+      categories: []
     }
   },
   getters: {
     getProducts: state => {
       return state.products;
+    },
+    getCategories: state => {
+      return state.categories;
     }
   },
   mutations: {
     registerProduct(state, payload) {
       state.products.push(payload);
+    },
+    setCategory(state, payload) {
+      state.categories = payload;
     }
+  },
+  actions: {
+    async loadCategories(context) {
+      const response = await fetch(
+        'http://localhost:8000/categories/'
+      );
+      const responseData = await response.json();
+
+      const categories = [];
+
+      for(const key in responseData) {
+        const category = {
+          categoryId: responseData[key].categoryId,
+          title: responseData[key].title
+        };
+        categories.push(category);
+      }
+      context.commit('setCategory', categories);
+    }
+
   }
 })
 
