@@ -34,10 +34,12 @@ const store = createStore({
     }
   },
   actions: {
+
     async loadCategories(context) {
       const response = await fetch(
         'http://localhost:8000/categories/'
       );
+
       const responseData = await response.json();
 
       const categories = [];
@@ -49,7 +51,9 @@ const store = createStore({
         };
         categories.push(category);
       }
+
       context.commit('setCategory', categories);
+
     }
 
   }

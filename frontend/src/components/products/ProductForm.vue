@@ -20,6 +20,7 @@
       <label for="title">Url de la imagen</label>
       <input type="text" class="form-control"/>
     </div>
+    <!--
     <div class="form-group">
       <label for="title">Category</label>
       <select v-model="selectedCategory">
@@ -32,24 +33,10 @@
     <div class="form-group">
       <a class="btn btn-outline-success">SAVE</a>
     </div>
+    -->
   </form>
-  {{fetchCategories}}
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      selectedCategory: null
-    }
-  },
-  created() {
-    this.$store.dispatch('loadCategories');
-  },
-  computed: {
-    fetchCategories() {
-      return this.$store.getters.getCategories;
-    }
-  }
-}
+export default {}
 </script>
