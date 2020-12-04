@@ -4,7 +4,10 @@
     <div class="container d-flex align-items-center">
 
       <router-link to="/">
-        <a class="navbar-brand pt-4 pb-4 font-xl-size">Vinylsmind</a>
+
+        <h1 class="navbar-brand mt-0 mr-0 mb-0 ml-0">
+          Vinylsmind
+        </h1>
       </router-link>
 
       <button class="navbar-toggler" data-toggle="collapse" data-target="#nav">
@@ -33,8 +36,8 @@
             </router-link>
            </li>
         </ul>
-
       </div>
+
     </div>
 
   </nav>
