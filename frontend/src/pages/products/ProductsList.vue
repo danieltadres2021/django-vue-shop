@@ -2,7 +2,13 @@
 
   <base-card>
     <h1>ProductList.vue</h1>
-    {{ fetchAllProducts }}
+
+    <ul>
+      <li v-for="(prod) in fetchAllProducts" v-bind:key="prod.productId">
+        {{ prod }}
+      </li>
+    </ul>
+
   </base-card>
 
 </template>
@@ -14,12 +20,12 @@ export default {
   },
   data() {
     return {
-      products: this.$store.getters.getProducts
+      products: []
     }
   },
   computed: {
     fetchAllProducts() {
-      return this.products;
+      return this.$store.getters.getProducts
     }
   }
 }
