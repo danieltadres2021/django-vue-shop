@@ -3,18 +3,7 @@ import { createStore } from 'vuex'
 const store = createStore({
   state() {
     return {
-      products: [
-        {
-          "productId": 2,
-          "title": "A new vinyl",
-          "price": 3000,
-          "description": "My first saved vinyl in my django api",
-          "imageUrl": "https://www.nacionrock.com/wp-content/uploads/LeadBlackSabbath-e1581776762564.jpg",
-          "category": 1,
-          "band": 1
-        }
-      ],
-      categories: []
+      products: []
     }
   },
   getters: {
@@ -28,34 +17,26 @@ const store = createStore({
   mutations: {
     registerProduct(state, payload) {
       state.products.push(payload);
-    },
-    setCategory(state, payload) {
-      state.categories = payload;
     }
   },
   actions: {
 
-    async loadCategories(context) {
-      const response = await fetch(
-        'http://localhost:8000/categories/'
-      );
+    // Method that sends request to the api to retrieve product data
 
-      const responseData = await response.json();
+    loadProducts(context) {
+      let fetchProducts = new Promise((resolve) => {
+        fetch('http://127.0.0.1:8000/products/')
+        .then(response => response.json())
+        .then(data => {
+          resolve(data);
+        })
+      });
 
-      const categories = [];
-
-      for(const key in responseData) {
-        const category = {
-          categoryId: responseData[key].categoryId,
-          title: responseData[key].title
-        };
-        categories.push(category);
-      }
-
-      context.commit('setCategory', categories);
+      fetchProducts.then((value) => {
+        context.commit('registerProduct', value)
+      })
 
     }
-
   }
 })
 
