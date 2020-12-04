@@ -1,5 +1,11 @@
 <template>
-  <div class="container mt-5 mb-5">
+  <div v-bind:class="cardMode">
     <slot> </slot>
   </div>
 </template>
+
+<script>
+  export default {
+    props: ['cardMode']
+  }
+</script>
