@@ -10,3 +10,26 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    productId: {
+      type: Number,
+      required: true
+    },
+    productTitle: {
+      type: String,
+      required: true
+    },
+    productPrice: {
+      type: Number,
+      required: true
+    },
+    productDescription: {
+      type: String,
+      required: true
+    }
+  }
+}
+</script>
