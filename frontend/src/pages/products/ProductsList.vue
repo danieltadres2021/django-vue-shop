@@ -1,17 +1,19 @@
 <template>
-
   <base-card card-mode="container mt-5 mb-5">
-    <ul>
-      <li v-for="(prod) in fetchAllProducts" v-bind:key="prod.productId">
+    <div class="row">
+      <product-item v-for="(prod) in fetchAllProducts" v-bind:key="prod.productId">
         {{ prod }}
-      </li>
-    </ul>
+      </product-item>
+    </div>
   </base-card>
-
 </template>
 
 <script>
+import ProductItem from '../../components/products/ProductItem.vue';
 export default {
+  components: {
+    ProductItem
+  },
   mounted() {
     this.$store.dispatch('loadProducts');
   },
