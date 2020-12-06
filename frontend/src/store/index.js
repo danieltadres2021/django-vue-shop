@@ -14,6 +14,9 @@ const store = createStore({
     },
     getCategories: (state) => {
       return state.categories;
+    },
+    getBands: (state) => {
+      return state.bands
     }
   },
   mutations: {
@@ -28,6 +31,12 @@ const store = createStore({
     },
     setCategories(state, payload) {
       state.categories = payload;
+    },
+    registerBand(state, payload) {
+      state.bands = payload;
+    },
+    setBands(state, payload) {
+      state.bands = payload
     }
   },
   actions: {
