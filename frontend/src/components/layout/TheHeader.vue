@@ -4,8 +4,7 @@
     <div class="container d-flex align-items-center">
 
       <router-link to="/">
-
-        <h1 class="navbar-brand mt-0 mr-0 mb-0 ml-0">
+        <h1 class="navbar-brand mt-0 mr-3 mb-0 ml-0">
           Vinylsmind
         </h1>
       </router-link>
@@ -19,12 +18,12 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <router-link to="/products">
-              <a class="nav-link"> Catalogo </a>
+              <a class="nav-link mr-0"> Catalogo </a>
             </router-link>
            </li>
            <li class="nav-item">
              <router-link to="/register">
-               <a class="nav-link"> Admin Products </a>
+               <a class="nav-link pl-0"> Admin Products </a>
              </router-link>
             </li>
         </ul>
