@@ -1,23 +1,30 @@
 <template>
   <base-card card-mode="container mt-5 mb-5">
     <form v-on:submit.prevent="submitForm" class="mx-auto" style="max-width: 300px;">
-      <div class="form-group">
+      <div class="form-group" v-bind:class="{invalid: !productId.isValid}">
         <label for="productId">Product Id</label>
-        <input type="number" name="productId" id="productId" class="d-flex w-100" v-model.trim="productId.val"/>
+        <input type="number" name="productId" id="productId" class="d-flex w-100" v-model.trim="productId.val" @blur="clearValidaty('productId')"/>
+        <p class="mt-2" v-if="!productId.isValid">Vinyl Id must not be empty. </p>
       </div>
-      <div class="form-group">
+      <div class="form-group" v-bind:class="{invalid: !productTitle.isValid}">
         <label for="title">Title</label>
-        <input type="text" name="title" id="title" class="d-block w-100" v-model.trim="productTitle.val"/>
+        <input type="text" name="title" id="title" class="d-block w-100" v-model.trim="productTitle.val" @blur="clearValidaty('productTitle')"/>
+        <p class="mt-2" v-if="!productTitle.isValid">Vinyl Title must not be empty. </p>
       </div>
-      <div class="form-group">
+
+      <div class="form-group" v-bind:class="{invalid: !productPrice.isValid}">
         <label for="price">Price</label>
-        <input type="number" name="price" id="price" class="d-flex w-100" v-model.number="productPrice.val"/>
+        <input type="number" name="price" id="price" class="d-flex w-100" v-model.number="productPrice.val" @blur="clearValidaty('productPrice')"/>
+        <p class="mt-2" v-if="!productPrice.isValid">Vinyl Price must be greater than 0</p>
       </div>
-      <div class="form-group">
+
+      <div class="form-group" v-bind:class="{invalid: !productDescription.isValid}">
         <label for="description">Description</label>
-        <textarea name="description" id="description" rows="5" cols="35" v-model.trim="productDescription.val">
+        <textarea name="description" id="description" rows="5" cols="35" v-model.trim="productDescription.val" @blur="clearValidaty('productDescription')">
         </textarea>
+        <p class="mt-2" v-if="!productDescription.isValid">Vinyl Description must not be empty. </p>
       </div>
+
       <div class="form-group">
         <label for="image">Image</label>
         <input type="text" name="image" id="image" class="d-flex w-100" v-model.trim="productImage.val"/>
@@ -98,6 +105,9 @@ export default {
     }
   },
   methods: {
+    clearValidaty(input) {
+      this[input].isValid = true;
+    },
     validateForm() {
       this.formIsValid = true;
       if(!this.productId.val || this.productId.val < 0) {
@@ -143,3 +153,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.invalid {
+  color: red;
+}
+
+.invalid input,
+.invalid textarea {
+  border: 1px solid red;
+}
+</style>
