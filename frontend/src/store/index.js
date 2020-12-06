@@ -4,7 +4,8 @@ const store = createStore({
   state() {
     return {
       products: [],
-      categories: []
+      categories: [],
+      bands: []
     }
   },
   getters: {
@@ -30,9 +31,6 @@ const store = createStore({
     }
   },
   actions: {
-
-    // Method that sends request to the api to retrieve product data
-
     loadProducts(context) {
       let fetchProducts = new Promise((resolve) => {
         fetch('http://127.0.0.1:8000/products/')
@@ -58,7 +56,6 @@ const store = createStore({
         context.commit('setProducts', products);
       })
     },
-
     loadCategories(context) {
       let fetchCategories = new Promise((resolve) => {
         fetch('http://127.0.0.1:8000/categories/')
@@ -79,7 +76,6 @@ const store = createStore({
         context.commit('setCategories', categories);
       })
     }
-
   }
 })
 
