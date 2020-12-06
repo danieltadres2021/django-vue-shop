@@ -21,24 +21,35 @@
         <label for="image">Image</label>
         <input type="text" name="image" id="image" class="d-flex w-100"/>
       </div>
-      <!--
       <div class="form-group">
-        <label for="title">Category</label>
-        <select v-model="selectedCategory">
-          <option v-for="category in fetchCategories" v-bind:key="category.categoryId">{{category.title}}</option>
+        <select v-model="selectedCategory" class="w-100">
+          <option disabled value="">Please select a category</option>
+          <option
+            v-for="category in fetchAllCategories"
+            v-bind:key="category.categoryId"
+            >
+            {{category.title}}
+          </option>
         </select>
       </div>
-      <div class="form-group">
-        <label for="title">Band</label>
-      </div>
-      <div class="form-group">
-        <a class="btn btn-outline-success">SAVE</a>
-      </div>
-      -->
     </form>
   </base-card>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      selectedCategory: ''
+    }
+  },
+  mounted() {
+    this.$store.dispatch('loadCategories');
+  },
+  computed: {
+    fetchAllCategories() {
+      return this.$store.getters.getCategories;
+    }
+  }
+}
 </script>
