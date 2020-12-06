@@ -32,6 +32,7 @@
           </option>
         </select>
       </div>
+      
     </form>
   </base-card>
 </template>
@@ -45,10 +46,14 @@ export default {
   },
   mounted() {
     this.$store.dispatch('loadCategories');
+    this.$store.dispatch('loadBands');
   },
   computed: {
     fetchAllCategories() {
       return this.$store.getters.getCategories;
+    },
+    fetchAllBands() {
+      return this.$store.getters.getBands;
     }
   }
 }
