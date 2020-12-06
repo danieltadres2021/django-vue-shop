@@ -65,6 +65,7 @@
 
 <script>
 export default {
+  emits: ['submit'],
   data() {
     return {
       productId: {
@@ -148,7 +149,9 @@ export default {
         productCategory: this.selectedCategory,
         productBand: this.selectedBand
       }
-      console.log(formData);
+      //console.log(formData);
+
+      this.$emit('submit', formData)
     }
   }
 }
