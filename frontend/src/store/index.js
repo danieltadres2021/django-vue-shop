@@ -34,7 +34,6 @@ const store = createStore({
     // Method that sends request to the api to retrieve product data
 
     loadProducts(context) {
-
       let fetchProducts = new Promise((resolve) => {
         fetch('http://127.0.0.1:8000/products/')
         .then(response => response.json())
@@ -42,9 +41,7 @@ const store = createStore({
           resolve(data);
         })
       });
-
-      const products = []
-
+      const products = [];
       fetchProducts.then((responseData) => {
         for(const key in responseData) {
           const prod = {
@@ -58,10 +55,31 @@ const store = createStore({
           }
           products.push(prod);
         }
-        context.commit('setProducts', products)
+        context.commit('setProducts', products);
       })
+    },
 
+    loadCategories(context) {
+      let fetchCategories = new Promise((resolve) => {
+        fetch('http://127.0.0.1:8000/categories/')
+        .then(response => response.json())
+        .then(data => {
+          resolve(data);
+        })
+      });
+      const categories = [];
+      fetchCategories.then((responseData) => {
+        for(const key in responseData) {
+          const category = {
+            categoryId: responseData[key].categoryId,
+            title: responseData[key].title
+          }
+          categories.push(category);
+        }
+        context.commit('setCategories', categories);
+      })
     }
+
   }
 })
 
