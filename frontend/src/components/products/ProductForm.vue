@@ -23,7 +23,7 @@
       </div>
       <div class="form-group">
         <select v-model="selectedCategory" class="w-100">
-          <option disabled value="">Please select a category</option>
+          <option disabled value="">Please select a Category</option>
           <option
             v-for="category in fetchAllCategories"
             v-bind:key="category.categoryId"
@@ -32,7 +32,17 @@
           </option>
         </select>
       </div>
-      
+      <div class="form-group">
+        <select v-model="selectedBand" class="w-100">
+          <option disabled value="">Please select a Band</option>
+          <option
+            v-for="band in fetchAllBands"
+            v-bind:key="band.bandId"
+            >
+            {{ band.title }}
+          </option>
+        </select>
+      </div>
     </form>
   </base-card>
 </template>
@@ -41,7 +51,8 @@
 export default {
   data() {
     return {
-      selectedCategory: ''
+      selectedCategory: '',
+      selectedBand: ''
     }
   },
   mounted() {
