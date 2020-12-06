@@ -28,7 +28,7 @@
             v-for="category in fetchAllCategories"
             v-bind:key="category.categoryId"
             >
-            {{category.title}}
+            {{ category.title }}
           </option>
         </select>
       </div>
