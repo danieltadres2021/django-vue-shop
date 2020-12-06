@@ -16,24 +16,15 @@ const store = createStore({
       return state.categories;
     },
     getBands: (state) => {
-      return state.bands
+      return state.bands;
     }
   },
   mutations: {
-    registerProduct(state, payload) {
-      state.products.push(payload);
-    },
     setProducts(state, payload) {
       state.products = payload;
     },
-    registerCategory(state, payload) {
-      state.categories.push(payload);
-    },
     setCategories(state, payload) {
       state.categories = payload;
-    },
-    registerBand(state, payload) {
-      state.bands = payload;
     },
     setBands(state, payload) {
       state.bands = payload
@@ -104,6 +95,36 @@ const store = createStore({
         }
         context.commit('setBands', bands)
       })
+    },
+    registerProduct(context, data) {
+      const productData = {
+        productId: parseInt(data.productId.val),
+        title: data.productTitle.val,
+        price: data.productPrice.val,
+        description: data.productDescription.val,
+        imageUrl: data.productImage.val,
+        category: data.productBand,
+        band: data.productCategory
+      };
+      console.log(productData);
+
+      const response = new Promise((resolve) => {
+        fetch('http://127.0.0.1:8000/products/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(productData)
+        })
+        .then((responseData) => {
+          resolve(responseData);
+        })
+      })
+
+      response.then((data) => {
+        console.log(data);
+      })
+
     }
   }
 })
