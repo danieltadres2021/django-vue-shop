@@ -84,6 +84,26 @@ const store = createStore({
         }
         context.commit('setCategories', categories);
       })
+    },
+    loadBands(context) {
+      let fetchBands = new Promise((resolve) => {
+        fetch('http://127.0.0.1:8000/bands/')
+        .then(response => response.json())
+        .then(data => {
+          resolve(data);
+        })
+      });
+      const bands = [];
+      fetchBands.then((responseData) => {
+        for(const key in responseData) {
+          const band = {
+            bandId: responseData[key].bandId,
+            title: responseData[key].title
+          }
+          bands.push(band);
+        }
+        context.commit('setBands', bands)
+      })
     }
   }
 })
