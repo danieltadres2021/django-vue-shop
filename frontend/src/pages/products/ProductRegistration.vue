@@ -14,6 +14,7 @@ export default {
   methods: {
     saveData(data) {
       console.log(data);
+      this.$store.dispatch('registerProduct', data);
     }
   }
 }
