@@ -3,12 +3,16 @@ import { createStore } from 'vuex'
 const store = createStore({
   state() {
     return {
-      products: []
+      products: [],
+      categories: []
     }
   },
   getters: {
-    getProducts: state => {
+    getProducts: (state) => {
       return state.products;
+    },
+    getCategories: (state) => {
+      return state.categories;
     }
   },
   mutations: {
@@ -17,6 +21,12 @@ const store = createStore({
     },
     setProducts(state, payload) {
       state.products = payload;
+    },
+    registerCategory(state, payload) {
+      state.categories.push(payload);
+    },
+    setCategories(state, payload) {
+      state.categories = payload;
     }
   },
   actions: {
@@ -38,9 +48,15 @@ const store = createStore({
       fetchProducts.then((responseData) => {
         for(const key in responseData) {
           const prod = {
-            productId : responseData[key].productId
+            productId: responseData[key].productId,
+            title: responseData[key].title,
+            price: responseData[key].price,
+            description: responseData[key].description,
+            imageUrl: responseData[key].imageUrl,
+            category: responseData[key].category,
+            band: responseData[key].band,
           }
-          products.push(prod)
+          products.push(prod);
         }
         context.commit('setProducts', products)
       })
