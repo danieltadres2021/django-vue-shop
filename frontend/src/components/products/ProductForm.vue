@@ -29,6 +29,7 @@
         <label for="image">Image</label>
         <input type="text" name="image" id="image" class="d-flex w-100" v-model.trim="productImage.val"/>
       </div>
+
       <div class="form-group">
         <select class="w-100" v-model="selectedCategory">
           <option disabled value="">Please select a Category</option>
@@ -123,11 +124,11 @@ export default {
         this.productPrice.isValid = false;
         this.formIsValid = false;
       }
-      if(this.productDescription === '') {
+      if(this.productDescription.val === '') {
         this.productDescription.isValid = false;
         this.formIsValid = false;
       }
-      if(this.productImage === '') {
+      if(this.productImage.val === '') {
         this.productImage.isValid = false;
         this.formIsValid = false;
       }
