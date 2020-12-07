@@ -136,7 +136,6 @@ const store = createStore({
           resolve(dataResponse);
         })
       })
-
       request.then((value) => {
         console.log(value);
         const productData = {
@@ -149,6 +148,24 @@ const store = createStore({
           band: value.band
         }
         context.commit('setProduct', productData);
+      })
+    },
+    deleteProductById(context, data) {
+      const request = new Promise((resolve) => {
+        fetch(`http://127.0.0.1:8000/product/${data}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => response.json())
+        .then(dataResponse => {
+          resolve(dataResponse);
+        })
+      })
+
+      request.then((data) => {
+        console.log(data);
       })
 
     }
