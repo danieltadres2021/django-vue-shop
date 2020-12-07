@@ -65,7 +65,7 @@
             </button>
           </div>
           <div class="m-1 d-inline-block">
-            <span v-on:click="readData" class="badge badge-primary pt-2 pl-2 pb-2 pr-2 pointer">Read</span>
+            <span v-on:click="readForm" class="badge badge-primary pt-2 pl-2 pb-2 pr-2 pointer">Read</span>
           </div>
           <div class="m-1 d-inline-block">
             <span class="badge badge-primary pt-2 pl-2 pb-2 pr-2">Update</span>
@@ -125,31 +125,40 @@ export default {
     clearValidaty(input) {
       this[input].isValid = true;
     },
-    validateForm() {
-      this.formIsValid = true;
-      if(!this.productId.val || this.productId.val < 0) {
-        this.productId.isValid = false;
-        this.formIsValid = false;
+    validateForm(value) {
+      if(value == 'submitForm') {
+        this.formIsValid = true;
+        if(!this.productId.val || this.productId.val < 0) {
+          this.productId.isValid = false;
+          this.formIsValid = false;
+        }
+        if(this.productTitle.val === '') {
+          this.productTitle.isValid = false;
+          this.formIsValid = false;
+        }
+        if(!this.productPrice.val || this.productPrice.val < 0) {
+          this.productPrice.isValid = false;
+          this.formIsValid = false;
+        }
+        if(this.productDescription.val === '') {
+          this.productDescription.isValid = false;
+          this.formIsValid = false;
+        }
+        if(this.productImage.val === '') {
+          this.productImage.isValid = false;
+          this.formIsValid = false;
+        }
       }
-      if(this.productTitle.val === '') {
-        this.productTitle.isValid = false;
-        this.formIsValid = false;
-      }
-      if(!this.productPrice.val || this.productPrice.val < 0) {
-        this.productPrice.isValid = false;
-        this.formIsValid = false;
-      }
-      if(this.productDescription.val === '') {
-        this.productDescription.isValid = false;
-        this.formIsValid = false;
-      }
-      if(this.productImage.val === '') {
-        this.productImage.isValid = false;
-        this.formIsValid = false;
+      if(value == 'readForm') {
+        this.formIsValid = true;
+        if(!this.productId.val || this.productId.val < 0) {
+          this.productId.isValid = false;
+          this.formIsValid = false;
+        }
       }
     },
     submitForm() {
-      this.validateForm();
+      this.validateForm('submitForm');
 
       // If the form is invalid, i do not want continue with the next code.
       if(!this.formIsValid) {
@@ -169,7 +178,11 @@ export default {
 
       this.$emit('submit', formData)
     },
-    readData() {
+    readForm() {
+      this.validateForm('readForm')
+      if(!this.formIsValid) {
+        return;
+      }
       console.log('Hi world!');
     }
   }
