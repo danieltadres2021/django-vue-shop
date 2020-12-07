@@ -201,7 +201,11 @@ export default {
       if(!this.formIsValid) {
         return;
       }
-      window.alert('Hi world!');
+      //console.log(this.productId.val)
+      //this.$store.dispatch('deleteProductById', this.productId.val);
+      //window.alert('Hi world!');
+
+      this.$store.dispatch('deleteProductById', this.productId.val);
     }
   }
 }
