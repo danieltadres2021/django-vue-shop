@@ -1,6 +1,6 @@
 <template>
   <base-card>
-    <product-form @submit="saveData" @read="readData"></product-form>
+    <product-form @submit="saveData"></product-form>
   </base-card>
 </template>
 
@@ -15,20 +15,6 @@ export default {
     saveData(data) {
       console.log(data);
       this.$store.dispatch('registerProduct', data);
-    },
-    readData(data) {
-      console.log(data);
-      //this.$store.dispatch('loadProducts');
-
-      //console.log(this.$store.getters.getProducts[0].productId);
-      //console.log(this.$store.getters.getProducts);
-
-
-      this.$store.dispatch('loadProductById', data.val);
-
-      console.log(this.$store.state.product.productId);
-      console.log(this.$store.state.product.title);
-
     }
   }
 }
