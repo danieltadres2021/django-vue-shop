@@ -71,7 +71,7 @@
             <span class="badge badge-primary pt-2 pl-2 pb-2 pr-2">Update</span>
           </div>
           <div class="m-1 d-inline-block">
-            <span class="badge badge-primary pt-2 pl-2 pb-2 pr-2">Delete</span>
+            <span v-on:click="deleteForm" class="badge badge-primary pt-2 pl-2 pb-2 pr-2 pointer">Delete</span>
           </div>
         </div>
       </div>
@@ -156,6 +156,13 @@ export default {
           this.formIsValid = false;
         }
       }
+      if(value == 'deleteForm') {
+        this.formIsValid = true;
+        if(!this.productId.val || this.productId.val < 0) {
+          this.productId.isValid = false;
+          this.formIsValid = false;
+        }
+      }
     },
     submitForm() {
       this.validateForm('submitForm');
@@ -188,6 +195,13 @@ export default {
       console.log(this.$store.state.product.title);
       document.getElementById('productId').value = this.$store.state.product.productId;
       document.getElementById('title').value = this.$store.state.product.title;
+    },
+    deleteForm() {
+      this.validateForm('deleteForm')
+      if(!this.formIsValid) {
+        return;
+      }
+      window.alert('Hi world!');
     }
   }
 }
