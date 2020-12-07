@@ -57,8 +57,23 @@
       <div v-if="!formIsValid" class="form-group">
         <p>Please fix the above errors and submit again.</p>
       </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Register Vinyl</button>
+      <div class="form-group d-flex justify-content-center">
+        <div>
+          <div class="m-1 d-inline-block">
+            <button class="badge badge-primary pt-2 pl-2 pb-2 pr-2 border border-0" type="submit">
+              Register
+            </button>
+          </div>
+          <div class="m-1 d-inline-block">
+            <span v-on:click="readData" class="badge badge-primary pt-2 pl-2 pb-2 pr-2 pointer">Read</span>
+          </div>
+          <div class="m-1 d-inline-block">
+            <span class="badge badge-primary pt-2 pl-2 pb-2 pr-2">Update</span>
+          </div>
+          <div class="m-1 d-inline-block">
+            <span class="badge badge-primary pt-2 pl-2 pb-2 pr-2">Delete</span>
+          </div>
+        </div>
       </div>
     </form>
   </base-card>
@@ -153,6 +168,9 @@ export default {
       //console.log(formData);
 
       this.$emit('submit', formData)
+    },
+    readData() {
+      console.log('Hi world!');
     }
   }
 }
@@ -166,5 +184,9 @@ export default {
 .invalid input,
 .invalid textarea {
   border: 1px solid red;
+}
+
+.pointer {
+  cursor: pointer;
 }
 </style>
