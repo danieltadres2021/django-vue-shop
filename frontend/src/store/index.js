@@ -5,7 +5,8 @@ const store = createStore({
     return {
       products: [],
       categories: [],
-      bands: []
+      bands: [],
+      product: null
     }
   },
   getters: {
@@ -28,6 +29,9 @@ const store = createStore({
     },
     setBands(state, payload) {
       state.bands = payload
+    },
+    setProduct(state, payload) {
+      state.product = payload
     }
   },
   actions: {
@@ -120,11 +124,12 @@ const store = createStore({
           resolve(responseData);
         })
       })
-
       response.then((data) => {
         console.log(data);
       })
-
+    },
+    loadProductById(context, data) {
+      context.commit('setProduct', data)
     }
   }
 })
