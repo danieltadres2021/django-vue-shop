@@ -18,6 +18,16 @@ export default {
     },
     readData(data) {
       console.log(data);
+      this.$store.dispatch('loadProducts');
+
+      //console.log(this.$store.getters.getProducts[0].productId);
+      console.log(this.$store.getters.getProducts);
+
+
+      this.$store.dispatch('loadProductById', data.val);
+
+      console.log('this.$store.state.product -> ' + this.$store.state.product);
+
     }
   }
 }
