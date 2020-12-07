@@ -26,7 +26,8 @@ export default {
 
       this.$store.dispatch('loadProductById', data.val);
 
-      console.log('this.$store.state.product -> ' + this.$store.state.product);
+      console.log(this.$store.state.product.productId);
+      console.log(this.$store.state.product.title);
 
     }
   }
