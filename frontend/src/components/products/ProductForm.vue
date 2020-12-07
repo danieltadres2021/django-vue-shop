@@ -81,7 +81,7 @@
 
 <script>
 export default {
-  emits: ['submit', 'read'],
+  emits: ['submit'],
   data() {
     return {
       productId: {
@@ -183,7 +183,11 @@ export default {
       if(!this.formIsValid) {
         return;
       }
-      this.$emit('read', this.productId)
+      this.$store.dispatch('loadProductById', this.productId.val);
+      console.log(this.$store.state.product.productId);
+      console.log(this.$store.state.product.title);
+      document.getElementById('productId').value = this.$store.state.product.productId;
+      document.getElementById('title').value = this.$store.state.product.title;
     }
   }
 }
