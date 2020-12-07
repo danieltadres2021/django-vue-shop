@@ -81,7 +81,7 @@
 
 <script>
 export default {
-  emits: ['submit'],
+  emits: ['submit', 'read'],
   data() {
     return {
       productId: {
@@ -183,7 +183,7 @@ export default {
       if(!this.formIsValid) {
         return;
       }
-      console.log('Hi world!');
+      this.$emit('read', this.productId)
     }
   }
 }
