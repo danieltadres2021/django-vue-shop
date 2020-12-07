@@ -6,7 +6,7 @@ const store = createStore({
       products: [],
       categories: [],
       bands: [],
-      product: null
+      product: ''
     }
   },
   getters: {
@@ -129,7 +129,19 @@ const store = createStore({
       })
     },
     loadProductById(context, data) {
-      context.commit('setProduct', data)
+      const request = new Promise((resolve) => {
+        fetch(`http://127.0.0.1:8000/product/${data}`)
+        .then(response => response.json())
+        .then(dataResponse => {
+          resolve(dataResponse);
+        })
+      })
+
+      request.then((value) => {
+        console.log(value);
+        context.commit('setProduct', value)
+      })
+
     }
   }
 })
