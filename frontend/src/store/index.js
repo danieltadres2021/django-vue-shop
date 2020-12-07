@@ -139,7 +139,16 @@ const store = createStore({
 
       request.then((value) => {
         console.log(value);
-        context.commit('setProduct', value)
+        const productData = {
+          productId: value.productId,
+          title: value.title,
+          price: value.price,
+          description: value.description,
+          imageUrl: value.imageUrl,
+          category: value.category,
+          band: value.band
+        }
+        context.commit('setProduct', productData);
       })
 
     }
