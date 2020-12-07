@@ -158,16 +158,13 @@ const store = createStore({
             'Content-Type': 'application/json'
           }
         })
-        .then(response => response.json())
         .then(dataResponse => {
           resolve(dataResponse);
         })
       })
-
       request.then((data) => {
         console.log(data);
       })
-
     }
   }
 })
