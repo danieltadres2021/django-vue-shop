@@ -19,19 +19,21 @@
     </div>
 
     <transition name="slide-fade">
-      <div class="mx-auto shadow pt-3 pb-3 mb-5 bg-white rounded mt-5 row" style="max-width: 500px;"
-        v-if="showData">
-        <section class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 d-flex justify-content-center">
+      <div class="mx-auto shadow pt-3 pb-3 mb-5 bg-white rounded mt-5" style="max-width: 500px;"
+          v-if="showData">
+        <section class="d-flex justify-content-center mt-3 mb-3">
           <img v-bind:src="this.selectedProduct.imageUrl" class="rounded-sm" style="max-width: 200px;">
         </section>
-        <section class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+        <section class="d-flex flex-column justify-content-center mt-3 mb-3">
+          <h1>{{ vinylTitle }}</h1>
+          <h1>{{ vinylPrice }}</h1>
+          <h1>{{ vinylDescription }}</h1>
+          <h1>{{ vinylCategory }}</h1>
+          <h1>{{ vinylBand }}</h1>
         </section>
       </div>
     </transition>
-
   </base-card>
-
-
 </template>
 
 <script>
@@ -52,7 +54,31 @@ export default {
   },
   watch: {
     selectedProduct() {
-      this.showData = true;
+      if(this.selectedProduct != 'undefined') {
+        this.showData = true;
+      } else {
+        this.showData = false;
+      }
+    }
+  },
+  computed: {
+    vinylImage() {
+      return this.selectedProduct.imageUrl;
+    },
+    vinylTitle() {
+      return this.selectedProduct.title;
+    },
+    vinylPrice() {
+      return this.selectedProduct.price;
+    },
+    vinylDescription() {
+      return this.selectedProduct.description;
+    },
+    vinylCategory() {
+      return this.selectedProduct.category;
+    },
+    vinylBand() {
+      return this.selectedProduct.band;
     }
   }
 }
