@@ -4,7 +4,7 @@
     <div class="form-group d-flex justify-content-center">
       <input
         type="text"
-        class="form-control mt-3 custom-input"
+        class="form-control mt-3 custom-width"
         placeholder="Enter a Vinyl name"
         name="title"
         id="title"
@@ -18,9 +18,13 @@
       </button>
     </div>
 
-    <div v-if="showData">
-      <h1>Hi devs!</h1>
-    </div>
+    <transition name="slide-fade">
+      <div class="custom-width mx-auto shadow p-3 mb-5 bg-white rounded mt-5"
+        v-if="showData">
+          {{ this.selectedProduct }}
+      </div>
+    </transition>
+
   </base-card>
 </template>
 
@@ -49,7 +53,21 @@ export default {
 </script>
 
 <style scoped>
-  .custom-input {
+  .custom-width {
     width: 500px;
   }
+
+  .slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
 </style>
