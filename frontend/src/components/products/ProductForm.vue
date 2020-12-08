@@ -1,5 +1,5 @@
 <template>
-  <base-card card-mode="container mt-5 mb-5">
+  
     <form v-on:submit.prevent="submitForm" class="mx-auto" style="max-width: 300px;">
       <div class="form-group" v-bind:class="{invalid: !productId.isValid}">
         <label for="productId">Product Id</label>
@@ -76,7 +76,7 @@
         </div>
       </div>
     </form>
-  </base-card>
+  
 </template>
 
 <script>
