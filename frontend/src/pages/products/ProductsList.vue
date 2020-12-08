@@ -17,6 +17,7 @@
 
 <script>
 import ProductItem from '../../components/products/ProductItem.vue';
+
 export default {
   components: {
     ProductItem
