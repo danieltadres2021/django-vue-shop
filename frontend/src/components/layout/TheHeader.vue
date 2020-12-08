@@ -31,6 +31,11 @@
                 <a class="nav-link pl-0"> Read Vinyls </a>
               </router-link>
              </li>
+             <li class="nav-item">
+               <router-link to="/delete">
+                 <a class="nav-link pl-0"> Delete Vinyls </a>
+               </router-link>
+            </li>
         </ul>
         <!-- RIGHT -->
         <ul class="navbar-nav">
