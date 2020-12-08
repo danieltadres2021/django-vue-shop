@@ -21,7 +21,8 @@
     <transition name="slide-fade">
       <div class="custom-width mx-auto shadow p-3 mb-5 bg-white rounded mt-5"
         v-if="showData">
-          {{ this.selectedProduct }}
+        <img v-bind:src="this.selectedProduct.imageUrl" style="max-width: 200px;">
+        <h1> </h1>
       </div>
     </transition>
 
