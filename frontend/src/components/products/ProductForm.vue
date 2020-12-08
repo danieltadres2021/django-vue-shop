@@ -65,9 +65,6 @@
             </button>
           </div>
           <div class="m-1 d-inline-block">
-            <span v-on:click="readForm" class="badge badge-primary pt-2 pl-2 pb-2 pr-2 pointer">Read</span>
-          </div>
-          <div class="m-1 d-inline-block">
             <span class="badge badge-primary pt-2 pl-2 pb-2 pr-2">Update</span>
           </div>
           <div class="m-1 d-inline-block">
