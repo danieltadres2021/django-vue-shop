@@ -19,10 +19,14 @@
     </div>
 
     <transition name="slide-fade">
-      <div class="custom-width mx-auto shadow p-3 mb-5 bg-white rounded mt-5"
+      <div class="mx-auto shadow pt-3 pb-3 mb-5 bg-white rounded mt-5" style="max-width: 500px;"
         v-if="showData">
-        <img v-bind:src="this.selectedProduct.imageUrl" style="max-width: 200px;">
-        <h1> </h1>
+        <section>
+          <img v-bind:src="this.selectedProduct.imageUrl" style="max-width: 200px;">
+        </section>
+        <section>
+          <h1>Hi devs!</h1>
+        </section>
       </div>
     </transition>
 
