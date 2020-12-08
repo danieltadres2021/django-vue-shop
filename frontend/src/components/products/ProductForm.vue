@@ -1,5 +1,5 @@
 <template>
-  
+
     <form v-on:submit.prevent="submitForm" class="mx-auto" style="max-width: 300px;">
       <div class="form-group" v-bind:class="{invalid: !productId.isValid}">
         <label for="productId">Product Id</label>
@@ -76,7 +76,7 @@
         </div>
       </div>
     </form>
-  
+
 </template>
 
 <script>
@@ -184,17 +184,6 @@ export default {
       //console.log(formData);
 
       this.$emit('submit', formData)
-    },
-    readForm() {
-      this.validateForm('readForm')
-      if(!this.formIsValid) {
-        return;
-      }
-      this.$store.dispatch('loadProductById', this.productId.val);
-      console.log(this.$store.state.product.productId);
-      console.log(this.$store.state.product.title);
-      document.getElementById('productId').value = this.$store.state.product.productId;
-      document.getElementById('title').value = this.$store.state.product.title;
     },
     deleteForm() {
       this.validateForm('deleteForm')
