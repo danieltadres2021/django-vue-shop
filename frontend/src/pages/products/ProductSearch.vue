@@ -19,18 +19,19 @@
     </div>
 
     <transition name="slide-fade">
-      <div class="mx-auto shadow pt-3 pb-3 mb-5 bg-white rounded mt-5" style="max-width: 500px;"
+      <div class="mx-auto shadow pt-3 pb-3 mb-5 bg-white rounded mt-5 row" style="max-width: 500px;"
         v-if="showData">
-        <section>
-          <img v-bind:src="this.selectedProduct.imageUrl" style="max-width: 200px;">
+        <section class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 d-flex justify-content-center">
+          <img v-bind:src="this.selectedProduct.imageUrl" class="rounded-sm" style="max-width: 200px;">
         </section>
-        <section>
-          <h1>Hi devs!</h1>
+        <section class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
         </section>
       </div>
     </transition>
 
   </base-card>
+
+
 </template>
 
 <script>
@@ -47,11 +48,11 @@ export default {
       this.selectedProduct = this.$store.getters.getProducts.find(
         product => product.title === this.productTitle
       );
-      if(this.selectedProduct != null) {
-        this.showData = true;
-      } else {
-        this.showData = false;
-      }
+    }
+  },
+  watch: {
+    selectedProduct() {
+      this.showData = true;
     }
   }
 }
