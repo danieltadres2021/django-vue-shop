@@ -128,28 +128,6 @@ const store = createStore({
         console.log(data);
       })
     },
-    loadProductById(context, data) {
-      const request = new Promise((resolve) => {
-        fetch(`http://127.0.0.1:8000/product/${data}`)
-        .then(response => response.json())
-        .then(dataResponse => {
-          resolve(dataResponse);
-        })
-      })
-      request.then((value) => {
-        console.log(value);
-        const productData = {
-          productId: value.productId,
-          title: value.title,
-          price: value.price,
-          description: value.description,
-          imageUrl: value.imageUrl,
-          category: value.category,
-          band: value.band
-        }
-        context.commit('setProduct', productData);
-      })
-    },
     deleteProductById(context, data) {
       const request = new Promise((resolve) => {
         fetch(`http://127.0.0.1:8000/product/${data}`, {
