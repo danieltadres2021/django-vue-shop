@@ -23,9 +23,14 @@
            </li>
            <li class="nav-item">
              <router-link to="/register">
-               <a class="nav-link pl-0"> Admin Products </a>
+               <a class="nav-link pl-0"> Add Vinyls </a>
              </router-link>
             </li>
+            <li class="nav-item">
+              <router-link to="/search">
+                <a class="nav-link pl-0"> Read Vinyls </a>
+              </router-link>
+             </li>
         </ul>
         <!-- RIGHT -->
         <ul class="navbar-nav">
