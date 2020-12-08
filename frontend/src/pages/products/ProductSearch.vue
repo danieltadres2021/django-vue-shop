@@ -35,11 +35,14 @@ export default {
   },
   methods: {
     searchByName() {
-      //console.log(this.productTitle);
-      //console.log(this.$store.getters.getProducts);
       this.selectedProduct = this.$store.getters.getProducts.find(
         product => product.title === this.productTitle
       );
+      if(this.selectedProduct != null) {
+        this.showData = true;
+      } else {
+        this.showData = false;
+      }
     }
   }
 }
