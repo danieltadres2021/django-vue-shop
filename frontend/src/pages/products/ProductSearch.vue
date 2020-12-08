@@ -1,8 +1,4 @@
 <template>
-  <base-dialog :show="error" title="An error ocurred!" @close="handleError">
-    <p>{{ error }}</p>
-  </base-dialog>
-
   <base-card card-mode="container mt-5 mb-5">
     <h4 class="text-center">Looking for a Vinyl?</h4>
     <div class="form-group d-flex justify-content-center">
@@ -44,7 +40,6 @@
 export default {
   data() {
     return {
-      error: null,
       showData: false,
       productTitle: null,
       selectedProduct: null
@@ -55,10 +50,6 @@ export default {
       this.selectedProduct = this.$store.getters.getProducts.find(
         product => product.title === this.productTitle
       );
-      this.error = true;
-    },
-    handleError() {
-      this.error = null;
     }
   },
   watch: {
