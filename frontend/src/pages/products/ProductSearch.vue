@@ -17,7 +17,6 @@
         Search
       </button>
     </div>
-
     <transition name="slide-fade">
       <div class="mx-auto shadow pt-3 pb-3 mb-5 bg-white rounded mt-5" style="max-width: 500px;"
           v-if="showData">
