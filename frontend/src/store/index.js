@@ -143,6 +143,33 @@ const store = createStore({
       request.then((data) => {
         console.log(data);
       })
+    },
+    updateProduct(context, data) {
+      const productData = {
+        productId: parseInt(data.productId.val),
+        title: data.productTitle.val,
+        price: data.productPrice.val,
+        description: data.productDescription.val,
+        imageUrl: data.productImage.val,
+        category: data.productBand,
+        band: data.productCategory
+      };
+      console.log(productData);
+      const response = new Promise((resolve) => {
+        fetch(`http://127.0.0.1:8000/product/${productData.productId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(productData)
+        })
+        .then((responseData) => {
+          resolve(responseData);
+        })
+      })
+      response.then((data) => {
+        console.log(data);
+      })
     }
   }
 })

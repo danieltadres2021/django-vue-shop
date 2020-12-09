@@ -35,7 +35,8 @@ export default {
   },
   methods: {
     deleteById(value) {
-      this.$store.dispatch('deleteProductById', value)
+      this.$store.dispatch('deleteProductById', value);
+      this.$router.push('/products')
     }
   }
 }

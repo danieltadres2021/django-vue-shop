@@ -3,35 +3,35 @@
     <form v-on:submit.prevent="submitForm" class="mx-auto" style="max-width: 300px;">
       <div class="form-group" v-bind:class="{invalid: !productId.isValid}">
         <label for="productId">Product Id</label>
-        <input type="number" name="productId" id="productId" class="d-flex w-100 form-control" v-model.trim="productId.val" @blur="clearValidaty('productId')"/>
+        <input type="number" name="productId" id="productId" class="d-flex w-100" v-model.trim="productId.val" @blur="clearValidaty('productId')"/>
         <p class="mt-2" v-if="!productId.isValid">Vinyl Id must not be empty. </p>
       </div>
       <div class="form-group" v-bind:class="{invalid: !productTitle.isValid}">
         <label for="title">Title</label>
-        <input type="text" name="title" id="title" class="d-block w-100 form-control" v-model.trim="productTitle.val" @blur="clearValidaty('productTitle')"/>
+        <input type="text" name="title" id="title" class="d-block w-100" v-model.trim="productTitle.val" @blur="clearValidaty('productTitle')"/>
         <p class="mt-2" v-if="!productTitle.isValid">Vinyl Title must not be empty. </p>
       </div>
 
       <div class="form-group" v-bind:class="{invalid: !productPrice.isValid}">
         <label for="price">Price</label>
-        <input type="number" name="price" id="price" class="d-flex w-100 form-control" v-model.number="productPrice.val" @blur="clearValidaty('productPrice')"/>
+        <input type="number" name="price" id="price" class="d-flex w-100" v-model.number="productPrice.val" @blur="clearValidaty('productPrice')"/>
         <p class="mt-2" v-if="!productPrice.isValid">Vinyl Price must be greater than 0</p>
       </div>
 
       <div class="form-group" v-bind:class="{invalid: !productDescription.isValid}">
         <label for="description">Description</label>
-        <textarea class="form-control" name="description" id="description" rows="5" cols="35" v-model.trim="productDescription.val" @blur="clearValidaty('productDescription')">
+        <textarea name="description" id="description" rows="5" cols="35" v-model.trim="productDescription.val" @blur="clearValidaty('productDescription')">
         </textarea>
         <p class="mt-2" v-if="!productDescription.isValid">Vinyl Description must not be empty. </p>
       </div>
 
       <div class="form-group">
         <label for="image">Image</label>
-        <input type="text" name="image" id="image" class="d-flex w-100 form-control" v-model.trim="productImage.val"/>
+        <input type="text" name="image" id="image" class="d-flex w-100" v-model.trim="productImage.val"/>
       </div>
 
       <div class="form-group">
-        <select class="w-100 form-control" v-model="selectedCategory">
+        <select class="w-100" v-model="selectedCategory">
           <option disabled value="">Please select a Category</option>
           <option
             v-for="category in fetchAllCategories"
@@ -43,7 +43,7 @@
         </select>
       </div>
       <div class="form-group">
-        <select class="w-100 form-control" v-model="selectedBand">
+        <select class="w-100" v-model="selectedBand">
           <option disabled value="">Please select a Band</option>
           <option
             v-for="band in fetchAllBands"
@@ -65,7 +65,7 @@
             </button>
           </div>
           <div class="m-1 d-inline-block">
-            <span class="badge badge-primary pt-2 pl-2 pb-2 pr-2">Update</span>
+            <span v-on:click="updateForm" class="badge badge-primary pt-2 pl-2 pb-2 pr-2 pointer">Update</span>
           </div>
         </div>
       </div>
@@ -176,6 +176,22 @@ export default {
         productBand: this.selectedBand
       }
       this.$emit('submit', formData)
+    },
+    updateForm() {
+      if(!this.formIsValid) {
+        return;
+      }
+
+      const formData = {
+        productId: this.productId,
+        productTitle: this.productTitle,
+        productPrice: this.productPrice,
+        productDescription: this.productDescription,
+        productImage: this.productImage,
+        productCategory: this.selectedCategory,
+        productBand: this.selectedBand
+      }
+      this.$emit('update', formData)
     }
   }
 }
