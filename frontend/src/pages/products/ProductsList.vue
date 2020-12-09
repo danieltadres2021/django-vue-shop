@@ -1,5 +1,6 @@
 <template>
   <base-card card-mode="container mt-5 mb-5">
+    <product-filter></product-filter>
     <div class="row">
       <product-item
         v-for="(prod) in fetchAllProducts"
@@ -17,10 +18,11 @@
 
 <script>
 import ProductItem from '../../components/products/ProductItem.vue';
-
+import ProductFilter from '../../components/products/ProductFilter.vue';
 export default {
   components: {
-    ProductItem
+    ProductItem,
+    ProductFilter
   },
   mounted() {
     this.$store.dispatch('loadProducts');
