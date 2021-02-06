@@ -1,7 +1,7 @@
 
 # Demo Shop app
 
-```bash
+```
 A mobile responsive Shop app to order products online 
 ```
 
